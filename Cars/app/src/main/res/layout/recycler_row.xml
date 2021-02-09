@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" >
+    <data>
+        <variable
+            name="carlist"
+            type="com.example.cars.model.CarList" />
+    </data>
+    
+
+   
+    <androidx.cardview.widget.CardView
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/cardview"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        app:cardCornerRadius="6dp"
+
+
+        >
+
+        <RelativeLayout
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="#FFFF"
+            android:orientation="vertical"
+            android:padding="2dp">
+
+            <ImageView
+                android:layout_gravity="center"
+                android:id="@+id/photo"
+                android:downloadImage="@{carlist.photo}"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+
+                />
+
+
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:text="@{carlist.title}"
+                android:layout_marginLeft="7dp"
+                android:textSize="13sp"
+                android:layout_toRightOf="@+id/photo"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                android:textColor="#000000" />
+
+            <RelativeLayout
+                android:layout_marginTop="80dp"
+                android:layout_width="wrap_content"
+                android:layout_toRightOf="@id/photo"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/btnlocation"
+                    android:layout_marginTop="2dp"
+                    android:layout_width="20dp"
+                    android:layout_height="15dp"
+                    android:src="@drawable/ic_baseline_location_on_24"/>
+                <TextView
+                    android:id="@+id/location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/btnlocation"
+                    android:text="@{carlist.location.cityName.concat('/'+carlist.location.townName)}"
+                    android:layout_centerVertical="true"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                    android:textColor="#7f8c8d"
+                    android:textSize="11sp" />
+
+
+                <TextView
+
+                    android:id="@+id/priceFormatted"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="8dp"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Small.Inverse"
+                    android:textColor="#c0392b"
+                    android:text="@{carlist.price}"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    />
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+</layout>
