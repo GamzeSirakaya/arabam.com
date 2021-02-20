@@ -1,5 +1,6 @@
 package com.example.cars.view
 
+import android.opengl.Visibility
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -11,11 +12,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.cars.R
 import com.example.cars.adapter.CarAdapter
 import com.example.cars.viewmodel.CarListViewModel
+import kotlinx.android.synthetic.main.fragment_car_list.*
 
 
 class CarListFragment : Fragment() {
-    private lateinit var carview: CarListViewModel
-     private val recyclerCarAdapter=CarAdapter(arrayListOf())
+    private lateinit var viewModel: CarListViewModel
+    private val recyclerCarAdapter = CarAdapter(arrayListOf())
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,43 +36,45 @@ class CarListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        carview = ViewModelProviders.of(this).get(CarListViewModel::class.java)
-        carview.refreshData()
-
-
-        recyclerViewcar.layoutManager= LinearLayoutManager(context)
-        recyclerViewcar.adapter=recyclerCarAdapter
+        viewModel = ViewModelProviders.of(this).get(CarListViewModel::class.java)
+        viewModel.refreshData()
+        recyclerViewcar.layoutManager = LinearLayoutManager(context)
+        recyclerViewcar.adapter = recyclerCarAdapter
         observeLiveData()
+
     }
 
     fun observeLiveData() {
-        carview.cars.observe(this, Observer {
-           swiperefresh.setOnResfresh{
-               recyclerViewcar.visibility=View.GONE
-                carserror.visibility=View.GONE
-                carsloading.visibility=View.VISIBLE
-                carview.refreshData()
-                swiperefresh.isRefreshing=false
-            }
-            recyclerViewcar.visibility=View.VISIBLE
-            recyclerCarAdapter.CarListUpdate(it)
-        })
-        carview.carserror.observe(viewLifecycleOwner, Observer {
-            if(it){
-                carserror.visibility=View.VISIBLE
-            }else{
-                carserror.visibility=View.GONE
-            }
-        })
-       carview.carsloading.observe(viewLifecycleOwner, Observer {
-            if(it){
-                recyclerViewcar.visibility=View.GONE
-                carserror.visibility=View.GONE
-                carsloading.visibility=View.VISIBLE
-            }else{
-              carsloading.visibility=View.GONE
+        viewModel.cars.observe(viewLifecycleOwner, Observer { cars ->
+            cars?.let {
+                recyclerViewcar.visibility = View.VISIBLE
+                recyclerCarAdapter.CarListUpdate(cars)
 
             }
+
+        })
+        viewModel.carserror.observe(viewLifecycleOwner, Observer { carserror ->
+            carserror?.let {
+                if (it) {
+                    noResult.visibility = View.VISIBLE
+                } else {
+                    noResult.visibility=View.GONE
+
+                }
+            }
+
+        })
+        viewModel.carsloading.observe(viewLifecycleOwner, Observer { carsloading->carsloading?.let {
+            if (it) {
+                recyclerViewcar.visibility = View.GONE
+                noResult.visibility = View.GONE
+               progress.visibility = View.VISIBLE
+            } else {
+                progress.visibility=View.GONE
+
+            }
+        }
+
         })
     }
 

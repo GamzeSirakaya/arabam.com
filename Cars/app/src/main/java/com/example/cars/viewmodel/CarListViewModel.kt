@@ -18,9 +18,9 @@ class CarListViewModel() : ViewModel() {
     private val disposable = CompositeDisposable()
 
     fun refreshData() {
-        veriAl()
+        getCarData()
     }
-    private fun veriAl() {
+    private fun getCarData() {
         carsloading.value = true
 
         disposable.add(
@@ -37,7 +37,7 @@ class CarListViewModel() : ViewModel() {
 
                     override fun onError(e: Throwable) {
                         //hataalirsak
-                        carserror.value=true
+                       carserror.value=true
                         carsloading.value=false
                         e.printStackTrace()
                     }

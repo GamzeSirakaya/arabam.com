@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.databinding.DataBindingUtil
+
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cars.R
 import com.example.cars.databinding.RecyclerRowBinding
