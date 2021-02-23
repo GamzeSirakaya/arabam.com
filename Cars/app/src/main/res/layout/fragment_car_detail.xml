@@ -1,16 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+
+        <variable
+            name="cardetail"
+            type="com.example.cars.model.CarDetail" />
+    </data>
 
     <LinearLayout
         android:id="@+id/detail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:orientation="vertical"
-        tools:context=".view.CarDetailFragment">
+        android:orientation="vertical">
+
 
         <TextView
             android:id="@+id/titledetail"
@@ -19,6 +25,7 @@
             android:layout_gravity="center"
             android:background="#f1f2f6"
             android:gravity="center"
+            android:text="@{cardetail.title}"
             android:textAlignment="center"
             android:textSize="14sp" />
 
@@ -33,7 +40,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <com.smarteist.autoimageslider.SliderLayout
+                <androidx.viewpager2.widget.ViewPager2
                     android:id="@+id/photodetail"
                     android:layout_width="match_parent"
                     android:layout_height="230dp"
@@ -59,7 +66,7 @@
 
                         android:gravity="center_horizontal"
                         android:textAlignment="center"
-                        android:textColor="#5352ed"
+                        android:textColor="#546de5"
                         android:textSize="17sp"
                         android:textStyle="bold" />
 
@@ -69,27 +76,28 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginRight="5dp"
+                        android:text="@{cardetail.location.cityName+'/'+cardetail.location.townName}"
                         android:textAlignment="gravity"
                         android:textColor="#000"
                         android:textSize="15sp" />
                 </LinearLayout>
 
                 <TextView
-                    android:layout_marginTop="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
-                    android:text="İlan Hakkında"
-                    android:textColor="#EA2027"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/car_about"
+                    android:textColor="@color/red"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
                 <RelativeLayout
-                    android:layout_marginTop="5dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:background="#dcdde1">
+                    android:layout_marginTop="5dp"
+                    android:background="@color/darkgray">
 
                     <TextView
                         android:id="@+id/fiyat"
@@ -98,7 +106,7 @@
                         android:layout_alignParentLeft="true"
                         android:layout_marginLeft="5dp"
                         android:gravity="center_horizontal"
-                        android:text="Fiyat"
+                        android:text="@string/price"
                         android:textAlignment="center"
                         android:textColor="#000"
                         android:textSize="20sp"
@@ -110,13 +118,14 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:layout_marginRight="5dp"
+                        android:text="@{cardetail.priceFormatted}"
                         android:textSize="20sp" />
                 </RelativeLayout>
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#f1f2f6">
+                    android:background="@color/rowgray">
 
                     <TextView
                         android:id="@+id/ilanno"
@@ -124,7 +133,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentLeft="true"
                         android:layout_marginLeft="5dp"
-                        android:text="İlan no"
+                        android:text="@string/no"
                         android:textColor="#000"
                         android:textSize="20sp"
                         android:textStyle="bold" />
@@ -133,6 +142,7 @@
                         android:id="@+id/UserInfoid"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:text="@{cardetail.userInfo.nameSurname}"
                         android:layout_alignParentRight="true"
                         android:layout_marginRight="5dp"
                         android:textSize="20sp" />
@@ -141,7 +151,7 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#dcdde1">
+                    android:background="@color/darkgray">
 
                     <TextView
                         android:id="@+id/ilantarihi"
@@ -149,7 +159,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentLeft="true"
                         android:layout_marginLeft="5dp"
-                        android:text="İlan Tarihi"
+                        android:text="@string/date"
                         android:textColor="#000"
                         android:textSize="20sp"
                         android:textStyle="bold" />
@@ -160,13 +170,14 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:layout_marginRight="5dp"
+                        android:text="@{cardetail.dateFormatted}"
                         android:textSize="20sp" />
                 </RelativeLayout>
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#f1f2f6">
+                    android:background="@color/rowgray">
 
 
                     <TextView
@@ -175,7 +186,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentLeft="true"
                         android:layout_marginLeft="5dp"
-                        android:text="Marka"
+                        android:text="@string/brand"
                         android:textColor="#000"
                         android:textSize="20sp"
                         android:textStyle="bold" />
@@ -186,13 +197,14 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:layout_marginRight="5dp"
+                        android:text="@{cardetail.category.name}"
                         android:textSize="20sp" />
                 </RelativeLayout>
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#dcdde1">
+                    android:background="@color/darkgray">
 
 
                     <TextView
@@ -201,7 +213,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentLeft="true"
                         android:layout_marginLeft="5dp"
-                        android:text="Seri"
+                        android:text="@string/seri"
                         android:textColor="#000"
                         android:textSize="20sp"
                         android:textStyle="bold" />
@@ -210,6 +222,7 @@
                         android:id="@+id/seriname"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:text="@{cardetail.category.name}"
                         android:layout_alignParentRight="true"
                         android:layout_marginRight="5dp"
                         android:textSize="20sp" />
@@ -219,7 +232,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
 
-                    android:background="#f1f2f6">
+                    android:background="@color/rowgray">
 
 
                     <TextView
@@ -228,7 +241,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentLeft="true"
                         android:layout_marginLeft="5dp"
-                        android:text="Model"
+                        android:text="@string/model"
                         android:textColor="#000"
                         android:textSize="20sp"
                         android:textStyle="bold" />
@@ -239,22 +252,23 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:layout_marginRight="5dp"
+                        android:text="@{cardetail.modelName}"
                         android:textSize="20sp" />
                 </RelativeLayout>
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#dcdde1">
+                    android:background="@color/darkgray">
 
 
                     <TextView
                         android:id="@+id/yıl"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-
                         android:layout_alignParentLeft="true"
                         android:layout_marginLeft="5dp"
+                        android:text="@{cardetail.properties.get(2).name}"
                         android:textColor="#000"
                         android:textSize="20sp"
                         android:textStyle="bold" />
@@ -265,13 +279,14 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:layout_marginRight="5dp"
+                        android:text="@{cardetail.properties.get(2).value}"
                         android:textSize="20sp" />
                 </RelativeLayout>
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#f1f2f6">
+                    android:background="@color/rowgray">
 
 
                     <TextView
@@ -280,6 +295,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentLeft="true"
                         android:layout_marginLeft="5dp"
+                        android:text="@{cardetail.properties.get(4).name}"
                         android:textColor="#000"
                         android:textSize="20sp"
                         android:textStyle="bold" />
@@ -290,13 +306,14 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:layout_marginRight="5dp"
+                        android:text="@{cardetail.properties.get(4).value}"
                         android:textSize="20sp" />
                 </RelativeLayout>
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#dcdde1">
+                    android:background="@color/darkgray">
 
 
                     <TextView
@@ -305,6 +322,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentLeft="true"
                         android:layout_marginLeft="5dp"
+                        android:text="@{cardetail.properties.get(3).name}"
                         android:textColor="#000"
                         android:textSize="20sp"
                         android:textStyle="bold" />
@@ -315,13 +333,14 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:layout_marginRight="5dp"
+                        android:text="@{cardetail.properties.get(3).value}"
                         android:textSize="20sp" />
                 </RelativeLayout>
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#f1f2f6">
+                    android:background="@color/rowgray">
 
                     <TextView
                         android:id="@+id/km"
@@ -329,6 +348,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentLeft="true"
                         android:layout_marginLeft="5dp"
+                        android:text="@{cardetail.properties.get(0).name}"
                         android:textColor="#000"
                         android:textSize="20sp"
                         android:textStyle="bold" />
@@ -339,13 +359,14 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:layout_marginRight="5dp"
+                        android:text="@{cardetail.properties.get(0).value}"
                         android:textSize="20sp" />
                 </RelativeLayout>
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#dcdde1">
+                    android:background="@color/darkgray">
 
                     <TextView
                         android:id="@+id/kimden"
@@ -353,7 +374,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentLeft="true"
                         android:layout_marginLeft="5dp"
-                        android:text="Kimden"
+                        android:text="@string/kimden"
                         android:textColor="#000"
                         android:textSize="20sp"
                         android:textStyle="bold" />
@@ -364,6 +385,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:layout_marginRight="5dp"
+                        android:text="@{cardetail.userInfo.nameSurname}"
                         android:textSize="20sp" />
                 </RelativeLayout>
 
@@ -381,7 +403,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentLeft="true"
-                        android:text="Açıklama"
+                        android:text="@string/desc"
                         android:textSize="25sp" />
 
                     <Button
@@ -393,7 +415,7 @@
                         android:layout_toRightOf="@id/desc"
                         android:background="@drawable/arrow"
                         android:backgroundTint="#000"
-                        app:backgroundTint="#403C3C" />
+                        app:backgroundTint="@color/iconcolor" />
 
 
                 </RelativeLayout>
@@ -402,7 +424,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="2dp"
-                    android:background="#95a5a6">
+                    android:background="@color/gray">
 
                 </TextView>
 
@@ -413,6 +435,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
+                    android:text="@{cardetail.text}"
                     android:textSize="20sp" />
 
                 <LinearLayout
@@ -426,13 +449,13 @@
                         android:layout_width="0dp"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:backgroundTint="#2ed573"
-                        android:text="Ara"
+                        android:backgroundTint="@color/green"
+                        android:text="@string/ara"
                         android:textAlignment="gravity"
                         android:textColor="@color/white"
                         android:textStyle="bold"
                         app:icon="@android:drawable/sym_call_outgoing"
-                        app:iconTint="#E6DFDF" />
+                        app:iconTint="@color/icon" />
 
                     <Button
                         android:id="@+id/message"
@@ -440,14 +463,14 @@
                         android:layout_width="0dp"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:backgroundTint="#1e90ff"
-                        android:text="Mesaj At"
+                        android:backgroundTint="@color/blue"
+                        android:text="@string/msj"
                         android:textAlignment="gravity"
                         android:textColor="@color/white"
                         android:textStyle="bold"
                         app:backgroundTint="#574E4E"
                         app:icon="@android:drawable/ic_dialog_email"
-                        app:iconTint="#E6DFDF" />
+                        app:iconTint="@color/icon" />
 
                 </LinearLayout>
 
@@ -457,7 +480,7 @@
         </ScrollView>
 
 
-
-
     </LinearLayout>
+
+
 </layout>

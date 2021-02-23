@@ -15,9 +15,9 @@ import com.example.cars.viewmodel.CarListViewModel
 import kotlinx.android.synthetic.main.fragment_car_list.*
 
 
-class CarListFragment : Fragment() {
+class CarListFragment : Fragment()  {
     private lateinit var viewModel: CarListViewModel
-    private val recyclerCarAdapter = CarAdapter(arrayListOf())
+private lateinit var carAdapter: CarAdapter
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,6 +29,7 @@ class CarListFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        carAdapter = CarAdapter()
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_car_list, container, false)
 
@@ -39,18 +40,25 @@ class CarListFragment : Fragment() {
         viewModel = ViewModelProviders.of(this).get(CarListViewModel::class.java)
         viewModel.refreshData()
         recyclerViewcar.layoutManager = LinearLayoutManager(context)
-        recyclerViewcar.adapter = recyclerCarAdapter
+        recyclerViewcar.adapter = carAdapter
+        swiperefresh.setOnRefreshListener {
+            progress.visibility=View.VISIBLE
+            noResult.visibility=View.GONE
+            recyclerViewcar.visibility=View.GONE
+            viewModel.refreshData()
+            swiperefresh.isRefreshing=false
+
+        }
         observeLiveData()
 
     }
 
-    fun observeLiveData() {
-        viewModel.cars.observe(viewLifecycleOwner, Observer { cars ->
-            cars?.let {
+   private fun observeLiveData() {
+        viewModel.cars.observe(viewLifecycleOwner,  { cars ->
                 recyclerViewcar.visibility = View.VISIBLE
-                recyclerCarAdapter.CarListUpdate(cars)
+            carAdapter.submitList(cars)
 
-            }
+
 
         })
         viewModel.carserror.observe(viewLifecycleOwner, Observer { carserror ->
@@ -76,7 +84,9 @@ class CarListFragment : Fragment() {
         }
 
         })
+
     }
+
 
 
 }

@@ -12,7 +12,7 @@ fun ImageView.gorsel(url:String?,placeholder: CircularProgressDrawable){
     val optios=RequestOptions().placeholder(placeholder).error(R.mipmap.ic_launcher)
     Glide.with(context).setDefaultRequestOptions(optios).load(url).into(this)
 }
-fun placeholderyap(context: Context):CircularProgressDrawable{
+fun makeplaceholder(context: Context):CircularProgressDrawable{
     return  CircularProgressDrawable(context).apply {
         strokeWidth=8f
         centerRadius=40f
@@ -22,5 +22,5 @@ fun placeholderyap(context: Context):CircularProgressDrawable{
 }
 @BindingAdapter("android:downloadImage")
 fun downloadImage(view: ImageView,url: String?){
-    view.gorsel(url?.replace("{0}","800x600"), placeholderyap(view.context))
+    view.gorsel(url?.replace("{0}","800x600"), makeplaceholder(view.context))
 }
