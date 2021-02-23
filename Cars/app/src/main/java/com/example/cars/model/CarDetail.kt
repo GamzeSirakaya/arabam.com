@@ -1,17 +1,19 @@
 package com.example.cars.model
 
+import com.google.gson.annotations.SerializedName
+
 data class CarDetail (
-    val id: Int,
-    val title: String,
-    val location: Location,
-    val category: Category,
-    val modelName: String,
-    val price: Double,
-    val priceFormatted: String,
-    val date: String,
-    val dateFormatted: String,
-    val photos: List<String>,
-    val properties: List<Properties>,
-    var text: String,
-    val userInfo: UserInfo
+    @SerializedName("id") val id: Int,
+    @SerializedName("title") val title: String,
+    @SerializedName("location") val location: Location,
+    @SerializedName("category") val category: Category,
+    @SerializedName("modelName") val modelName: String,
+    @SerializedName("price") val price: Double,
+    @SerializedName("priceFormatted") val priceFormatted: String,
+    @SerializedName("date") val date: String,
+    @SerializedName("dateFormatted") val dateFormatted: String,
+    @SerializedName("photos") val photos: List<String>,
+    @SerializedName("properties")   val properties: List<Properties>,
+    @SerializedName("text") var text: String,
+    @SerializedName("userInfo") val userInfo: UserInfo
 )

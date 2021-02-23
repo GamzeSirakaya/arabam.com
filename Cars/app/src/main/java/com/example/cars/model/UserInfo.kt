@@ -1,8 +1,10 @@
 package com.example.cars.model
 
+import com.google.gson.annotations.SerializedName
+
 data class UserInfo(
-    val id: Int,
-    val nameSurname: String,
-    val phone: String,
-    val phoneFormatted: String
+    @SerializedName("id")  val id: Int,
+    @SerializedName("nameSurname") val nameSurname: String,
+    @SerializedName("phone") val phone: String,
+    @SerializedName("phoneFormatted") val phoneFormatted: String
 )
