@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="photo"
+            type="String" />
+        <variable
+            name="listener"
+            type="com.example.cars.util.CarClickListener" />
+
+    </data>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:onClick="@{listener::carClick}"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/photodetail"
+            android:layout_width="match_parent"
+            android:downloadImage="@{photo}"
+            android:layout_height="480dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="1dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="1dp" />
+    </RelativeLayout>
+</layout>
