@@ -17,7 +17,7 @@ class CarListViewModel : ViewModel() {
     val carsloading = MutableLiveData<Boolean>()
 
     private val disposable = CompositeDisposable()
-    private val pageSize = 100
+    private val pageSize = 50
     private lateinit var sourceFactory: CarDataSourceFactory
 
 

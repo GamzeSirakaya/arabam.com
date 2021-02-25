@@ -33,7 +33,7 @@ class ViewPagerFragment : Fragment() {
         carDetailViewModel=ViewModelProvider(this).get(CarDetailViewModel::class.java)
 
         viewPagerAdapter.addList(photos!!)
-        var detailViewPager = view.findViewById<ViewPager2>(R.id.detailViewPager)
+        val detailViewPager = view.findViewById<ViewPager2>(R.id.detailViewPager)
         val detailTabLayout = view.findViewById<TabLayout>(R.id.detailTabLayout)
         detailViewPager.adapter =viewPagerAdapter
         TabLayoutMediator(detailTabLayout,detailViewPager){tab,position->}.attach()

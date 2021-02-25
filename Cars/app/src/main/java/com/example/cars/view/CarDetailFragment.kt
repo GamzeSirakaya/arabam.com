@@ -57,8 +57,8 @@ class CarDetailFragment : Fragment(), CarClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        var viewPager = dataBinding.tableInclude.tableViewpager
-        var tabLayout = dataBinding.tableInclude.tableLayout
+        val viewPager = dataBinding.tableInclude.tableViewpager
+        val tabLayout = dataBinding.tableInclude.tableLayout
         tabLayout.setupWithViewPager(viewPager)
         arguments?.let {
             carId = arguments?.getInt("carId")
@@ -96,8 +96,8 @@ class CarDetailFragment : Fragment(), CarClickListener {
         viewPagerAdapter = ViewPagerAdapter(arrayListOf())
         observerLiveData()
 
-        var photoViewPager = dataBinding.viewpager
-        var dotsIndicator = dataBinding.photoTabLayout
+        val photoViewPager = dataBinding.viewpager
+        val dotsIndicator = dataBinding.photoTabLayout
         photoViewPager.adapter = viewPagerAdapter
         photoViewPager.orientation = ViewPager2.ORIENTATION_HORIZONTAL
         TabLayoutMediator(dotsIndicator, photoViewPager) { tab, position ->

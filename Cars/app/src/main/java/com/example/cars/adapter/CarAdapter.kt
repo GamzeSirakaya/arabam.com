@@ -61,7 +61,7 @@ class CarAdapter:PagedListAdapter<CarList,CarAdapter.CarViewHolder>(diffUtilCall
         val carId = view.idTextt.text.toString().toInt()
         val bundle = bundleOf("carId" to carId)
         Navigation.findNavController(view).navigate(R.id.action_carListFragment_to_carDetailFragment,bundle)
-        Log.i("id",carId.toString())
+
 
     }
 

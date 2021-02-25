@@ -15,9 +15,9 @@ import com.example.cars.viewmodel.CarListViewModel
 import kotlinx.android.synthetic.main.fragment_car_list.*
 
 
-class CarListFragment : Fragment()  {
+class CarListFragment : Fragment() {
     private lateinit var viewModel: CarListViewModel
-private lateinit var carAdapter: CarAdapter
+    private lateinit var carAdapter: CarAdapter
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,7 +29,7 @@ private lateinit var carAdapter: CarAdapter
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        carAdapter = CarAdapter()
+       carAdapter = CarAdapter()
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_car_list, container, false)
 
@@ -42,22 +42,21 @@ private lateinit var carAdapter: CarAdapter
         recyclerViewcar.layoutManager = LinearLayoutManager(context)
         recyclerViewcar.adapter = carAdapter
         swiperefresh.setOnRefreshListener {
-            progress.visibility=View.VISIBLE
-            noResult.visibility=View.GONE
-            recyclerViewcar.visibility=View.GONE
+            progress.visibility = View.VISIBLE
+            noResult.visibility = View.GONE
+            recyclerViewcar.visibility = View.GONE
             viewModel.refreshData()
-            swiperefresh.isRefreshing=false
+            swiperefresh.isRefreshing = false
 
         }
         observeLiveData()
 
     }
 
-   private fun observeLiveData() {
-        viewModel.cars.observe(viewLifecycleOwner,  { cars ->
-                recyclerViewcar.visibility = View.VISIBLE
+    private fun observeLiveData() {
+        viewModel.cars.observe(viewLifecycleOwner, { cars ->
+            recyclerViewcar.visibility = View.VISIBLE
             carAdapter.submitList(cars)
-
 
 
         })
@@ -66,27 +65,27 @@ private lateinit var carAdapter: CarAdapter
                 if (it) {
                     noResult.visibility = View.VISIBLE
                 } else {
-                    noResult.visibility=View.GONE
+                    noResult.visibility = View.GONE
 
                 }
             }
 
         })
-        viewModel.carsloading.observe(viewLifecycleOwner, Observer { carsloading->carsloading?.let {
-            if (it) {
-                recyclerViewcar.visibility = View.GONE
-                noResult.visibility = View.GONE
-               progress.visibility = View.VISIBLE
-            } else {
-                progress.visibility=View.GONE
+        viewModel.carsloading.observe(viewLifecycleOwner, Observer { carsloading ->
+            carsloading?.let {
+                if (it) {
+                    recyclerViewcar.visibility = View.GONE
+                    noResult.visibility = View.GONE
+                    progress.visibility = View.VISIBLE
+                } else {
+                    progress.visibility = View.GONE
 
+                }
             }
-        }
 
         })
 
     }
-
 
 
 }
