@@ -20,9 +20,17 @@
         <action
             android:id="@+id/action_carDetailFragment_to_carListFragment"
             app:destination="@id/carListFragment" />
+        <action
+            android:id="@+id/action_detailFragment_to_viewPagerFragment"
+            app:destination="@id/viewPagerFragment" />
         <argument
             android:name="carId"
             app:argType="integer"
             android:defaultValue="0" />
     </fragment>
+    <fragment
+        android:id="@+id/viewPagerFragment"
+        android:name="com.example.cars.view.ViewPagerFragment"
+        android:label="fragment_view_pager"
+        tools:layout="@layout/fragment_view_pager" />
 </navigation>

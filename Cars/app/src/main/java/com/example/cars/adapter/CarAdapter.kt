@@ -14,11 +14,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.cars.R
 import com.example.cars.databinding.RecyclerRowBinding
 import com.example.cars.model.CarList
-import com.example.cars.view.CarListFragmentDirections
+import com.example.cars.util.CarClickListener
 import kotlinx.android.synthetic.main.recycler_row.view.*
 
 
-class CarAdapter:PagedListAdapter<CarList,CarAdapter.CarViewHolder>(diffUtilCallBack),CarClickListener{
+class CarAdapter:PagedListAdapter<CarList,CarAdapter.CarViewHolder>(diffUtilCallBack),
+    CarClickListener {
 
 
     class CarViewHolder(var view: RecyclerRowBinding) : RecyclerView.ViewHolder(view.root) {
@@ -53,14 +54,11 @@ class CarAdapter:PagedListAdapter<CarList,CarAdapter.CarViewHolder>(diffUtilCall
 
     }
 
-    fun CarListUpdate(newCarList: List<CarList>) {
-        notifyDataSetChanged()
 
-    }
 
 
     override fun carClick( view: View) {
-        val carId = view.id
+        val carId = view.idTextt.text.toString().toInt()
         val bundle = bundleOf("carId" to carId)
         Navigation.findNavController(view).navigate(R.id.action_carListFragment_to_carDetailFragment,bundle)
         Log.i("id",carId.toString())

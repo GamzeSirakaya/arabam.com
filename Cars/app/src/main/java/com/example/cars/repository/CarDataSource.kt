@@ -50,13 +50,11 @@ class CarDataSource(private val disposable: CompositeDisposable,
             requestedPage
         ).subscribe(
             { response ->
-                Log.d("CDT", "loading : $requestedPage")
                 initialcallback?.onResult(response, null, adjacentPage)
                 callback?.onResult(response, adjacentPage)
 
             },
             {
-                Log.d("CDT", "error : $requestedPage",it)
             }
         ))
     }

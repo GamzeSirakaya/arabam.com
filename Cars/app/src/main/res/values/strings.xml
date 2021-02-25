@@ -15,4 +15,8 @@
     <string name="msj">Mesaj At</string>
     <string name="ara">Ara</string>
     <string name="defult_value">Bilgi girilmemiştir</string>
+    <string name="DateCreate">open : <![CDATA[<b><font color=#FF0000>%s</b>]]></string>
+    <string name="car_list_app_name">Tüm İlanlar</string>
+    <string name="car_detail_app_name">İlan Detayı</string>
+    <string name="car_detail_photo_app_name">Fotoğraf Detayı</string>
 </resources>

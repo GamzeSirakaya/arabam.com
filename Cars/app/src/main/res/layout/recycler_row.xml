@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -10,7 +11,7 @@
 
         <variable
             name="listener"
-            type="com.example.cars.adapter.CarClickListener" />
+            type="com.example.cars.util.CarClickListener" />
 
 
     </data>
@@ -34,7 +35,13 @@
             android:background="@color/white"
             android:orientation="vertical"
             android:padding="2dp">
-
+            <TextView
+                android:id="@+id/idTextt"
+                android:text="@{String.valueOf(carlist.id)}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="invisible"
+                tools:ignore="MissingConstraints" />
             <ImageView
                 android:id="@+id/photo"
                 android:layout_width="90dp"

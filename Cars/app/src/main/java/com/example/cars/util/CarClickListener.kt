@@ -1,4 +1,4 @@
-package com.example.cars.adapter
+package com.example.cars.util
 
 import android.view.View
 
