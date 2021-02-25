@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/car_graph"
+    app:startDestination="@id/carListFragment">
+
+    <fragment
+        android:id="@+id/carListFragment"
+        android:name="com.example.cars.view.CarListFragment"
+        android:label="CarListFragment">
+        <action
+            android:id="@+id/action_carListFragment_to_carDetailFragment"
+            app:destination="@id/carDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/carDetailFragment"
+        android:name="com.example.cars.view.CarDetailFragment"
+        android:label="CarDetailFragment">
+        <action
+            android:id="@+id/action_carDetailFragment_to_carListFragment"
+            app:destination="@id/carListFragment" />
+        <action
+            android:id="@+id/action_detailFragment_to_viewPagerFragment"
+            app:destination="@id/viewPagerFragment" />
+        <argument
+            android:name="carId"
+            app:argType="integer"
+            android:defaultValue="0" />
+    </fragment>
+    <fragment
+        android:id="@+id/viewPagerFragment"
+        android:name="com.example.cars.view.ViewPagerFragment"
+        android:label="fragment_view_pager"
+        tools:layout="@layout/fragment_view_pager" />
+</navigation>
