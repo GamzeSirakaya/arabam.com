@@ -30,7 +30,6 @@ class CarDetailViewModel: ViewModel() {
                        carLiveData.value = it
                     }
                 }, {
-                    Log.d("loadDetail", "loadDetail: Failed",it)
                     detailError.value = true
                 }))
     }
