@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Arabam.com</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="app_detail">İlan detayı</string>
+    <string name="car_about">İlan Hakkında</string>
+    <string name="price">Fiyat</string>
+    <string name="no">İlan no</string>
+    <string name="date">İlan tarihi</string>
+    <string name="brand">Marka</string>
+    <string name="seri">Seri</string>
+    <string name="model">Model</string>
+    <string name="kimden">Kimden</string>
+    <string name="desc">Açıklama</string>
+    <string name="msj">Mesaj At</string>
+    <string name="ara">Ara</string>
+    <string name="defult_value">Bilgi girilmemiştir</string>
+    <string name="DateCreate"><![CDATA[<b><font color=#FF0000>%s</b>]]></string>
+    <string name="car_list_app_name">Tüm İlanlar</string>
+    <string name="car_detail_app_name">İlan Detayı</string>
+    <string name="car_detail_photo_app_name">Fotoğraf Detayı</string>
+</resources>
