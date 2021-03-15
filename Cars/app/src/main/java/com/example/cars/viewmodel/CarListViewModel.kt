@@ -46,7 +46,8 @@ class CarListViewModel : ViewModel() {
             .cache()
         carsloading.value = true
 
-        disposable.add(eventPagedList.subscribeOn(Schedulers.io())
+        disposable.add(eventPagedList.
+        subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread()).doOnSubscribe { carsloading.value = true }
             .subscribe({
                 if (it.isNotEmpty()){
